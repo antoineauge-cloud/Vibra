@@ -1,0 +1,6 @@
+{
+  "summary":  "Plan d'implémentation pour le thème Cyberpunk Néon immersif, la résolution de la redirection d'installation Chrome vers l'aperçu AI Studio, et l'audit de sécurité complet (protection SSRF, isolation cryptographique et en-têtes CSP).",
+  "updatedAt":  "2026-10-20T20:31:44.904529640Z",
+  "requestFeedback":  true,
+  "userFacing":  true
+}

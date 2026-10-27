@@ -1,0 +1,6 @@
+{
+  "name": "Vibra - APK & PWA",
+  "description": "Application installable Android (APK & PWA) pour Vibra - Écoutez en toute liberté YouTube avec l'IA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

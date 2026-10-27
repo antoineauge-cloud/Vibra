@@ -1,0 +1,122 @@
+{
+  "id": "/",
+  "name": "Vibra - Musique & Égaliseur IA",
+  "short_name": "Vibra",
+  "description": "Application officielle Vibra : Écoutez en toute liberté YouTube, Spotify et toutes les radios FM de France avec égaliseur studio et IA.",
+  "dir": "ltr",
+  "lang": "fr-FR",
+  "theme_color": "#07070e",
+  "background_color": "#07070e",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "categories": [
+    "music",
+    "audio",
+    "entertainment"
+  ],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-maskable-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-splash-icon.jpg",
+      "sizes": "1024x1024",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-mobile.jpg",
+      "sizes": "768x1376",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Lecteur audio haute fidélité avec égaliseur dynamique Vibra"
+    },
+    {
+      "src": "/screenshot-desktop.jpg",
+      "sizes": "1376x768",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Studio complet Vibra avec égaliseur et sélection de flux"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Catalogue Musique",
+      "short_name": "Musique",
+      "description": "Catalogue universel sans pub YouTube et Spotify",
+      "url": "/?tab=music",
+      "icons": [
+        {
+          "src": "/pwa-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Radios FM France",
+      "short_name": "Radios FM",
+      "description": "Écouter les stations radios en direct haute fidélité",
+      "url": "/?tab=radio",
+      "icons": [
+        {
+          "src": "/pwa-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Égaliseur Audio Studio",
+      "short_name": "Égaliseur",
+      "description": "Personnaliser les basses, médiums et aigus en temps réel",
+      "url": "/?tab=equalizer",
+      "icons": [
+        {
+          "src": "/pwa-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

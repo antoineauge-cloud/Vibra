@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="fr" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Vibra - APK & PWA</title>
+    <meta name="description" content="Application installable Android (APK & PWA) pour Vibra - Écoutez en toute liberté YouTube avec l'IA." />
+    
+    <!-- Official Web App Manifest (PWABuilder, Google Play & WebAPK) -->
+    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
+    <meta name="application-name" content="Vibra" />
+
+    <!-- OpenGraph / Social -->
+    <meta property="og:title" content="Vibra - APK & PWA" />
+    <meta property="og:description" content="Application installable Android (APK & PWA) pour Vibra - Écoutez en toute liberté YouTube avec l'IA." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/pwa-512x512.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vibra - APK & PWA" />
+    <meta name="twitter:description" content="Écouter en toute liberté YouTube sur cette application simple et futuriste orientée IA." />
+    <meta name="twitter:image" content="/pwa-512x512.png" />
+    
+    <!-- PWA & Mobile Meta Tags -->
+    <meta name="theme-color" content="#07070e" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Vibra" />
+    
+    <!-- Icons & iOS Splash Screen -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-startup-image" href="/apple-splash-screen.jpg" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/pwa-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/pwa-512x512.png" />
+
+    <!-- Intercept and silence Vite HMR WebSocket in iframe preview where HMR is disabled -->
+    <script>
+      (function() {
+        function isHmrError(err) {
+          if (!err) return false;
+          var msg = '';
+          if (typeof err === 'string') {
+            msg = err;
+          } else if (err instanceof Error || typeof err === 'object') {
+            msg = (err.message || '') + ' ' + (err.stack || '') + ' ' + (err.reason || '') + ' ' + String(err);
+          }
+          return msg.indexOf('WebSocket') !== -1 || 
+                 msg.indexOf('closed without opened') !== -1 || 
+                 msg.indexOf('[vite]') !== -1 || 
+                 msg.indexOf('vite-hmr') !== -1 ||
+                 msg.indexOf('@vite/client') !== -1;
+        }
+
+        try {
+          var _OrigWebSocket = window.WebSocket;
+          if (_OrigWebSocket) {
+            window.WebSocket = function(url, protocols) {
+              var urlStr = String(url || '');
+              if (
+                urlStr.indexOf('ais-dev') !== -1 || 
+                urlStr.indexOf('localhost') !== -1 || 
+                urlStr.indexOf('/vite-hmr') !== -1 || 
+                protocols === 'vite-hmr'
+              ) {
+                return {
+                  readyState: 1,
+                  bufferedAmount: 0,
+                  extensions: '',
+                  protocol: 'vite-hmr',
+                  binaryType: 'blob',
+                  url: urlStr,
+                  send: function() {},
+                  close: function() {},
+                  addEventListener: function() {},
+                  removeEventListener: function() {},
+                  dispatchEvent: function() { return true; },
+                  onopen: null,
+                  onclose: null,
+                  onerror: null,
+                  onmessage: null,
+                };
+              }
+              return new _OrigWebSocket(url, protocols);
+            };
+            window.WebSocket.prototype = _OrigWebSocket.prototype;
+            window.WebSocket.CONNECTING = 0;
+            window.WebSocket.OPEN = 1;
+            window.WebSocket.CLOSING = 2;
+            window.WebSocket.CLOSED = 3;
+          }
+        } catch (e) {}
+
+        var _origError = console.error;
+        console.error = function() {
+          for (var i = 0; i < arguments.length; i++) {
+            if (isHmrError(arguments[i])) return;
+          }
+          _origError.apply(console, arguments);
+        };
+
+        var _origWarn = console.warn;
+        console.warn = function() {
+          for (var j = 0; j < arguments.length; j++) {
+            if (isHmrError(arguments[j])) return;
+          }
+          _origWarn.apply(console, arguments);
+        };
+
+        window.addEventListener('error', function(event) {
+          if (isHmrError(event.error) || isHmrError(event.message)) {
+            event.stopImmediatePropagation();
+            event.preventDefault();
+            return true;
+          }
+        }, true);
+
+        window.addEventListener('unhandledrejection', function(event) {
+          if (isHmrError(event.reason)) {
+            event.stopImmediatePropagation();
+            event.preventDefault();
+            return true;
+          }
+        }, true);
+
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+          if (isHmrError(msg) || isHmrError(error)) {
+            return true;
+          }
+          return false;
+        };
+      })();
+    </script>
+    
+    <!-- Official Service Worker Registration for PWA Installation -->
+    <script>
+      (function() {
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js', { scope: '/' })
+              .then(function(reg) {
+                reg.update();
+                console.log('Vibra Official Service Worker registered:', reg.scope);
+              })
+              .catch(function(err) {
+                console.warn('Vibra Service Worker registration notice:', err);
+              });
+          });
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 dark:bg-[#07070d] dark:text-slate-100 transition-colors duration-200 antialiased overflow-x-hidden selection:bg-purple-600 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

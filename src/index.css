@@ -1,0 +1,497 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@layer utilities {
+  /* Cyberpunk Neon Glow Effects */
+  .neon-glow-cyan {
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.5), 0 0 35px rgba(0, 240, 255, 0.25);
+  }
+  .neon-glow-pink {
+    box-shadow: 0 0 15px rgba(255, 0, 128, 0.5), 0 0 35px rgba(255, 0, 128, 0.25);
+  }
+  .neon-glow-purple {
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5), 0 0 35px rgba(168, 85, 247, 0.25);
+  }
+  .neon-text-cyan {
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.85), 0 0 22px rgba(0, 240, 255, 0.45);
+  }
+  .neon-text-pink {
+    text-shadow: 0 0 8px rgba(255, 0, 128, 0.85), 0 0 22px rgba(255, 0, 128, 0.45);
+  }
+  .neon-border-cyan {
+    border-color: rgba(0, 240, 255, 0.45);
+    box-shadow: inset 0 0 14px rgba(0, 240, 255, 0.12), 0 0 16px rgba(0, 240, 255, 0.22);
+  }
+  .neon-border-pink {
+    border-color: rgba(255, 0, 128, 0.45);
+    box-shadow: inset 0 0 14px rgba(255, 0, 128, 0.12), 0 0 16px rgba(255, 0, 128, 0.22);
+  }
+  .cyber-gradient-card {
+    background: linear-gradient(135deg, rgba(14, 14, 32, 0.65) 0%, rgba(8, 9, 22, 0.75) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .cyber-grid-pattern {
+    background-image: linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .fluid-transition {
+    transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Transparent Glassmorphism Cyberpunk Utilities */
+  .cyber-glass-menu {
+    background-color: rgba(7, 8, 22, 0.55);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+  }
+  .cyber-glass-card {
+    background-color: rgba(12, 14, 32, 0.45);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(0, 240, 255, 0.18);
+  }
+
+  /* Interactive Radiant Neon Glow Hover Effect */
+  .neon-card-hover {
+    transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .neon-card-hover:hover {
+    border-color: rgba(0, 240, 255, 0.8) !important;
+    box-shadow: 0 0 22px rgba(0, 240, 255, 0.45), inset 0 0 14px rgba(0, 240, 255, 0.15) !important;
+    transform: translateY(-2px) scale(1.008);
+  }
+  .neon-card-hover-pink {
+    transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .neon-card-hover-pink:hover {
+    border-color: rgba(255, 0, 128, 0.8) !important;
+    box-shadow: 0 0 22px rgba(255, 0, 128, 0.45), inset 0 0 14px rgba(255, 0, 128, 0.15) !important;
+    transform: translateY(-2px) scale(1.008);
+  }
+}
+
+@keyframes cyber-crt-sweep {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* Cyberpunk Background Animation Keyframes */
+@keyframes cyber-grid-sliding {
+  0% {
+    background-position-y: 0px;
+  }
+  100% {
+    background-position-y: 54px;
+  }
+}
+
+@keyframes cyber-drift-orb-1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(140px, 90px, 0) scale(1.22);
+  }
+  100% {
+    transform: translate3d(-70px, 150px, 0) scale(0.95);
+  }
+}
+
+@keyframes cyber-drift-orb-2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-150px, -100px, 0) scale(1.2);
+  }
+  100% {
+    transform: translate3d(90px, -130px, 0) scale(0.92);
+  }
+}
+
+@keyframes cyber-drift-orb-3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.92);
+  }
+  50% {
+    transform: translate3d(110px, -70px, 0) scale(1.18);
+  }
+  100% {
+    transform: translate3d(-95px, 60px, 0) scale(1.06);
+  }
+}
+
+@keyframes cyber-beam-slide {
+  0% {
+    transform: translateY(-100%) rotate(35deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  75% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(160vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+/* Custom Cyberpunk Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(7, 7, 14, 0.5);
+  backdrop-filter: blur(8px);
+}
+::-webkit-scrollbar-thumb {
+  background: #1f1f3a;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00f0ff;
+  box-shadow: 0 0 10px #00f0ff;
+}
+
+/* Cyberpunk ATH (Affichage Tête Haute / HUD) Utilities */
+.hud-clip-corner {
+  clip-path: polygon(0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+.hud-clip-chamfer {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+.hud-tactical-glow {
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.9), 0 0 18px rgba(0, 240, 255, 0.5);
+}
+
+.hud-pink-glow {
+  text-shadow: 0 0 6px rgba(255, 0, 128, 0.9), 0 0 18px rgba(255, 0, 128, 0.5);
+}
+
+.hud-amber-glow {
+  text-shadow: 0 0 6px rgba(245, 158, 11, 0.9), 0 0 18px rgba(245, 158, 11, 0.5);
+}
+
+@keyframes hud-reticle-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hud-radar-sweep {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes hud-flicker {
+  0%, 100% { opacity: 1; }
+  41.99% { opacity: 1; }
+  42% { opacity: 0.7; }
+  43% { opacity: 1; }
+  45.99% { opacity: 1; }
+  46% { opacity: 0.85; }
+  47% { opacity: 1; }
+}
+
+.hud-flicker-fx {
+  animation: hud-flicker 9s infinite;
+}
+
+/* Retro-futuristic CRT Beam Full-Viewport Sweep Animation */
+@keyframes hud-crt-full-sweep {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh);
+    opacity: 0;
+  }
+}
+
+.hud-crt-sweep-line {
+  animation: hud-crt-full-sweep 6.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  will-change: transform, opacity;
+}
+
+/* Radar Scan Keyframes for AI loading indicator */
+@keyframes radar-spin-sweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.radar-sweep-anim {
+  animation: radar-spin-sweep 2.8s linear infinite;
+  will-change: transform;
+}
+
+
+/* =========================================================================
+   CYBERPUNK ATH (HUD) RANDOM CLIP-PATH GLITCH ANIMATIONS
+   Calculated horizontal clip-path slices and coordinate offsets
+   ========================================================================= */
+
+/* 1. ATH Header Cyan Slice Glitch */
+@keyframes ath-clip-glitch-cyan {
+  0%, 100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  82% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  82.4% {
+    clip-path: polygon(0 14%, 100% 14%, 100% 28%, 0 28%);
+    transform: translate3d(-3.5px, 0.5px, 0);
+    opacity: 0.95;
+  }
+  83.2% {
+    clip-path: polygon(0 58%, 100% 58%, 100% 72%, 0 72%);
+    transform: translate3d(3px, -0.5px, 0);
+    opacity: 0.85;
+  }
+  84.0% {
+    clip-path: polygon(0 34%, 100% 34%, 100% 48%, 0 48%);
+    transform: translate3d(-2px, 0, 0);
+    opacity: 0.9;
+  }
+  84.8% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  93.0% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  93.4% {
+    clip-path: polygon(0 78%, 100% 78%, 100% 94%, 0 94%);
+    transform: translate3d(2.5px, 0.5px, 0);
+    opacity: 0.9;
+  }
+  94.2% {
+    clip-path: polygon(0 6%, 100% 6%, 100% 19%, 0 19%);
+    transform: translate3d(-2px, -0.5px, 0);
+    opacity: 0.85;
+  }
+  95.0% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+}
+
+/* 2. ATH Header Magenta Slice Glitch */
+@keyframes ath-clip-glitch-magenta {
+  0%, 100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  77.0% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  77.5% {
+    clip-path: polygon(0 42%, 100% 42%, 100% 56%, 0 56%);
+    transform: translate3d(3.5px, -0.5px, 0);
+    opacity: 0.9;
+  }
+  78.3% {
+    clip-path: polygon(0 18%, 100% 18%, 100% 32%, 0 32%);
+    transform: translate3d(-3px, 0.5px, 0);
+    opacity: 0.85;
+  }
+  79.1% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  90.5% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  91.0% {
+    clip-path: polygon(0 68%, 100% 68%, 100% 86%, 0 86%);
+    transform: translate3d(-2.5px, -0.5px, 0);
+    opacity: 0.95;
+  }
+  91.8% {
+    clip-path: polygon(0 26%, 100% 26%, 100% 39%, 0 39%);
+    transform: translate3d(2px, 0.5px, 0);
+    opacity: 0.85;
+  }
+  92.6% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+}
+
+/* Text Element Glitch with Pseudo-elements */
+.ath-glitch-text {
+  position: relative;
+  display: inline-block;
+}
+.ath-glitch-text::before,
+.ath-glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.ath-glitch-text::before {
+  color: #00f0ff;
+  animation: ath-clip-glitch-cyan 6.5s infinite steps(1, end);
+  filter: drop-shadow(-1px 0 2px #00f0ff);
+}
+.ath-glitch-text::after {
+  color: #ff007f;
+  animation: ath-clip-glitch-magenta 5.1s infinite steps(1, end);
+  filter: drop-shadow(1px 0 2px #ff007f);
+}
+
+/* 3. ATH Modal Clip-Path Twitch Glitch */
+@keyframes ath-modal-clip-twitch {
+  0%, 100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translate3d(0, 0, 0);
+    filter: none;
+  }
+  86.0% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translate3d(0, 0, 0);
+    filter: none;
+  }
+  86.5% {
+    clip-path: polygon(0 0, 100% 0, 100% 24%, 99% 25%, 100% 27%, 100% 100%, 0 100%, 0.8% 70%, 0 72%);
+    transform: translate3d(-2px, 0.5px, 0);
+    filter: brightness(1.15) contrast(1.05);
+  }
+  87.2% {
+    clip-path: polygon(0 0, 99.2% 0, 100% 48%, 98.8% 50%, 100% 53%, 100% 100%, 0 100%, 1% 35%, 0 37%);
+    transform: translate3d(2.5px, -0.5px, 0);
+    filter: brightness(1.2) hue-rotate(15deg);
+  }
+  87.9% {
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 99% 82%, 100% 84%, 100% 100%, 0 100%);
+    transform: translate3d(-1px, 0, 0);
+    filter: brightness(1.05);
+  }
+  88.5% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translate3d(0, 0, 0);
+    filter: none;
+  }
+  95.0% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translate3d(0, 0, 0);
+    filter: none;
+  }
+  95.5% {
+    clip-path: polygon(0 0, 100% 0, 100% 14%, 99.4% 15%, 100% 17%, 100% 100%, 0 100%);
+    transform: translate3d(1.5px, -0.5px, 0);
+    filter: brightness(1.1);
+  }
+  96.1% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translate3d(0, 0, 0);
+    filter: none;
+  }
+}
+
+.ath-modal-glitch {
+  animation: ath-modal-clip-twitch 8.4s infinite steps(1, end);
+  will-change: clip-path, transform, filter;
+}
+
+/* 4. ATH Direct Header Slice Glitch (for title banners & tactical badges) */
+@keyframes ath-header-clip-slice {
+  0%, 100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+  }
+  83.0% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+  }
+  83.6% {
+    clip-path: inset(22% 0 52% 0);
+    transform: translate3d(-3px, 1px, 0);
+    filter: drop-shadow(-2px 0 #00f0ff);
+  }
+  84.3% {
+    clip-path: inset(62% 0 16% 0);
+    transform: translate3d(3px, -1px, 0);
+    filter: drop-shadow(2px 0 #ff007f);
+  }
+  85.0% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+    filter: none;
+  }
+  93.2% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+  }
+  93.8% {
+    clip-path: inset(40% 0 35% 0);
+    transform: translate3d(2.5px, 0, 0);
+    filter: drop-shadow(1px 0 #00f0ff);
+  }
+  94.4% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+    filter: none;
+  }
+}
+
+.ath-header-glitch {
+  animation: ath-header-clip-slice 7.2s infinite ease-in-out;
+  will-change: clip-path, transform, filter;
+}
+
+

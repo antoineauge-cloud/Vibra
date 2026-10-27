@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="128" fill="#0c0c1e"/>
+  <defs>
+    <linearGradient id="vibraGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="50%" stop-color="#ec4899" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <circle cx="256" cy="256" r="180" stroke="url(#vibraGrad)" stroke-width="8" opacity="0.4" />
+  <!-- Sound Wave / V lettermark -->
+  <path d="M140 180 L256 360 L372 180" stroke="url(#vibraGrad)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  <circle cx="256" cy="250" r="28" fill="#ffffff" />
+  <!-- Sound bars -->
+  <line x1="80" y1="256" x2="100" y2="256" stroke="#8b5cf6" stroke-width="12" stroke-linecap="round" />
+  <line x1="412" y1="256" x2="432" y2="256" stroke="#ec4899" stroke-width="12" stroke-linecap="round" />
+</svg>

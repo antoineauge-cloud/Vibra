@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.vibra.music",
+      "sha256_cert_fingerprints": [
+        "14:6D:E9:01:F8:85:D5:3E:95:46:12:F1:C0:0A:7A:B3:36:99:9B:F7:55:03:77:E1:97:5B:3C:A2:18:24:D3:2A",
+        "8F:5C:2B:1A:93:4D:7E:6F:02:1B:3C:4D:5E:6F:7A:8B:9C:0D:1E:2F:3A:4B:5C:6D:7E:8F:9A:0B:1C:2D:3E:4F"
+      ]
+    }
+  }
+]
